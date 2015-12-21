@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<linker>
+    <assembly fullname="RatingViewSample">
+        <type fullname="RatingViewSample.*" />
+    </assembly>
+    <assembly fullname="RebuyFormsRating">
+        <type fullname="RebuyFormsRating.*" />
+    </assembly>
+    <assembly fullname="RebuyFormsRating.IOS">
+        <type fullname="RebuyFormsRating.IOS.*" />
+    </assembly>
+</linker>
