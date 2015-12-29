@@ -4,6 +4,6 @@ namespace RebuyFormsRating.Common.Services
 {
     public interface IRatingService
     {
-        void OpenStore();
+		void OpenStore(string appStoreId);
     }
 }

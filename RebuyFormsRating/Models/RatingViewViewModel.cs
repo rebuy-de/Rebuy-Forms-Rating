@@ -272,7 +272,12 @@ namespace RebuyFormsRating.Models
                 return;
             }
 
-            ratingservice.OpenStore();
+			if (Device.OS == TargetPlatform.iOS) {
+				ratingservice.OpenStore("1000000");
+			} else {
+				ratingservice.OpenStore("");
+			}
+            
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
