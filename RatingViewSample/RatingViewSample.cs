@@ -1,17 +1,14 @@
 ﻿using System;
-
 using Xamarin.Forms;
-using RebuyFormsRating;
 using RebuyFormsRating.Models;
 
 namespace RatingViewSample
 {
     public class App : Application
     {
-        public App ()
+        public App()
         {
-            // The root page of your application
-			MainPage = new ContentPage {
+            MainPage = new ContentPage {
                 Content = new StackLayout {
                     VerticalOptions = LayoutOptions.Center,
                     Children = {
@@ -24,18 +21,18 @@ namespace RatingViewSample
             };
         }
 
-        protected override void OnStart ()
+        protected override void OnStart()
         {
             // Handle when your app starts
-			new RatingViewHandler().CheckOpenRatingView();
+            new RatingViewHandler().CheckOpenRatingView("100000");
         }
 
-        protected override void OnSleep ()
+        protected override void OnSleep()
         {
             // Handle when your app sleeps
         }
 
-        protected override void OnResume ()
+        protected override void OnResume()
         {
             // Handle when your app resumes
         }
