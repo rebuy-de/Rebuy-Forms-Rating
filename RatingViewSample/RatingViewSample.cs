@@ -2,6 +2,7 @@
 
 using Xamarin.Forms;
 using RebuyFormsRating;
+using RebuyFormsRating.Models;
 
 namespace RatingViewSample
 {
@@ -10,15 +11,13 @@ namespace RatingViewSample
         public App ()
         {
             // The root page of your application
-            MainPage = new ContentPage {
+			MainPage = new ContentPage {
                 Content = new StackLayout {
                     VerticalOptions = LayoutOptions.Center,
                     Children = {
                         new Label {
                             XAlign = TextAlignment.Center,
                             Text = "Welcome to Xamarin Forms!"
-                        },
-                        new RatingView {
                         }
                     }
                 }
@@ -28,6 +27,7 @@ namespace RatingViewSample
         protected override void OnStart ()
         {
             // Handle when your app starts
+			new RatingViewHandler().CheckOpenRatingView();
         }
 
         protected override void OnSleep ()
