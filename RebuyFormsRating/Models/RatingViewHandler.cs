@@ -32,7 +32,7 @@ namespace RebuyFormsRating.Models
 
         public void OpenRatingViewIfNeeded(string appStoreId)
         {
-            if (String.IsNullOrWhiteSpace(VersionNumber) || !VersionNumber.Equals(DependencyService.Get<IInfoService>().AppVersionCode)) {
+            if (String.IsNullOrWhiteSpace(VersionNumber) || VersionNumber != DependencyService.Get<IInfoService>().AppVersionCode) {
                 resetReminder();
             } else {
                 if (!IsRated && UsageCount >= UsesBeforeRating) {
