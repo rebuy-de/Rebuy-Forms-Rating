@@ -8,12 +8,12 @@ namespace RebuyFormsRating.Models
 {
     public class RatingViewHandler
     {
-        private const int usesBeforeRating = 1;
-
         public bool IsRated {
             get { return Settings.IsRated; }
             set { Settings.IsRated = value; }
         }
+
+        public int UsesBeforeRating { set; get; } = 1;
 
         public int UsageCount {
             get { return Settings.UsageCount; }
@@ -30,23 +30,23 @@ namespace RebuyFormsRating.Models
             if (String.IsNullOrWhiteSpace(VersionNumber) || !VersionNumber.Equals(DependencyService.Get<IInfoService>().AppVersionCode)) {
                 resetReminder();
             } else {
-                if (!IsRated && UsageCount >= usesBeforeRating) {
+                if (!IsRated && UsageCount >= UsesBeforeRating) {
                     showActionSheet(appStoreId);
                 }
 
-                ++UsageCount;
+                UsageCount++;
             }
         }
 
         private async Task showActionSheet(string appStoreId)
         {
             var action = await UserDialogs.Instance.ActionSheetAsync(
-                             "Sie nutzen unsere App gerne? Dann nehmen Sie sich bitte für eine Bewertung einen Moment Zeit! Es dauert nicht länger als eine Minute. Vielen Dank!",
-                             "Später bewerten",
-                             null,
-                             "Jetzt bewerten",
-                             "Nein, danke"
-                         );
+                "Sie nutzen unsere App gerne? Dann nehmen Sie sich bitte für eine Bewertung einen Moment Zeit! Es dauert nicht länger als eine Minute. Vielen Dank!",
+                "Später bewerten",
+                null,
+                "Jetzt bewerten",
+                "Nein, danke"
+            );
 
             if (action.Equals("Später bewerten")) {
                 hideReminder();

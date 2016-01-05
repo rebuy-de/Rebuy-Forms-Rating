@@ -24,7 +24,10 @@ namespace RatingViewSample
         protected override void OnStart()
         {
             // Handle when your app starts
-            new RatingViewHandler().CheckOpenRatingView("100000");
+            var ratingViewHandler = new RatingViewHandler() {
+                UsesBeforeRating = 2
+            };
+            ratingViewHandler.CheckOpenRatingView("100000");
         }
 
         protected override void OnSleep()
