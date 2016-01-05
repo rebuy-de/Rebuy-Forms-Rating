@@ -13,13 +13,14 @@ We are very eager about your feedback, so do not hesitate to create an issue or 
 2. Initialize and add the call-check in the 'OnStart' in your application Class.
 
 Example implementation:
-
-	protected override void OnStart()
-    {
-        var ratingViewhandler = new RatingViewHandler() {
+```cs
+protected override void OnStart()
+{
+        var ratingViewhandler = new RatingViewHandler
+        {
         	UsesBeforeRating = 2
         };
         ratingViewHandler.CheckOpenRatingView("100000");
-	}
-	
+}
+```
 

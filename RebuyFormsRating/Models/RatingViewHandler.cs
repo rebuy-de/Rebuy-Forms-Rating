@@ -25,7 +25,12 @@ namespace RebuyFormsRating.Models
             set { Settings.VersionNumber = value; }
         }
 
-        public void CheckOpenRatingView(string appStoreId)
+        public string RatingMessage { set; get; } = "Sie nutzen unsere App gerne? Dann nehmen Sie sich bitte für eine Bewertung einen Moment Zeit! Es dauert nicht länger als eine Minute. Vielen Dank!";
+        public string RateLaterMessage { set; get; } = "Später bewerten";
+        public string RateNowMessage { set; get; } = "Jetzt bewerten";
+        public string DisturbMessage { set; get; } = "Nein, danke";
+
+        public void OpenRatingViewIfNeeded(string appStoreId)
         {
             if (String.IsNullOrWhiteSpace(VersionNumber) || !VersionNumber.Equals(DependencyService.Get<IInfoService>().AppVersionCode)) {
                 resetReminder();
@@ -41,18 +46,18 @@ namespace RebuyFormsRating.Models
         private async Task showActionSheet(string appStoreId)
         {
             var action = await UserDialogs.Instance.ActionSheetAsync(
-                "Sie nutzen unsere App gerne? Dann nehmen Sie sich bitte für eine Bewertung einen Moment Zeit! Es dauert nicht länger als eine Minute. Vielen Dank!",
-                "Später bewerten",
+                RatingMessage,
+                RateLaterMessage,
                 null,
-                "Jetzt bewerten",
-                "Nein, danke"
+                RateNowMessage,
+                DisturbMessage
             );
 
-            if (action.Equals("Später bewerten")) {
+            if (action.Equals(RateLaterMessage)) {
                 hideReminder();
-            } else if (action.Equals("Jetzt bewerten")) {
+            } else if (action.Equals(RateNowMessage)) {
                 rateNow(appStoreId);
-            } else if (action.Equals("Nein, danke")) {
+            } else if (action.Equals(DisturbMessage)) {
                 disableReminder();
             }
         }

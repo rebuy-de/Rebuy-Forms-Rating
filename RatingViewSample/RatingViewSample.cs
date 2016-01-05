@@ -27,7 +27,8 @@ namespace RatingViewSample
             var ratingViewHandler = new RatingViewHandler() {
                 UsesBeforeRating = 2
             };
-            ratingViewHandler.CheckOpenRatingView("100000");
+            //The parameter is only a default apple appStoreId
+            ratingViewHandler.OpenRatingViewIfNeeded("100000");
         }
 
         protected override void OnSleep()
