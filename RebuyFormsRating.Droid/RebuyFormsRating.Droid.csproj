@@ -59,26 +59,12 @@
     <Reference Include="Xamarin.Forms.Platform">
       <HintPath>..\packages\Xamarin.Forms.1.5.0.6447\lib\MonoAndroid10\Xamarin.Forms.Platform.dll</HintPath>
     </Reference>
-    <Reference Include="Splat">
-      <HintPath>..\packages\Splat.1.6.2\lib\monoandroid\Splat.dll</HintPath>
-    </Reference>
-    <Reference Include="Acr.Support.Android">
-      <HintPath>..\packages\Acr.Support.1.1.1\lib\MonoAndroid10\Acr.Support.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Acr.UserDialogs">
-      <HintPath>..\packages\Acr.UserDialogs.4.2.0\lib\MonoAndroid10\Acr.UserDialogs.dll</HintPath>
-    </Reference>
-    <Reference Include="Acr.UserDialogs.Interface">
-      <HintPath>..\packages\Acr.UserDialogs.4.2.0\lib\MonoAndroid10\Acr.UserDialogs.Interface.dll</HintPath>
-    </Reference>
-    <Reference Include="AndHUD">
-      <HintPath>..\packages\Acr.UserDialogs.4.2.0\lib\MonoAndroid10\AndHUD.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Common\Services\InfoService.cs" />
     <Compile Include="Common\Services\RatingService.cs" />
+    <Compile Include="ActionSheet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -86,12 +72,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\layout\CustomActionSheet.axml" />
+    <AndroidResource Include="Resources\layout\TextViewItem.axml" />
+    <AndroidResource Include="Resources\layout\CustomListView.axml" />
   </ItemGroup>
   <Import Project="..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.5.0.6447\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Common\" />
     <Folder Include="Common\Services\" />
+    <Folder Include="Resources\layout\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RebuyFormsRating\RebuyFormsRating.csproj">

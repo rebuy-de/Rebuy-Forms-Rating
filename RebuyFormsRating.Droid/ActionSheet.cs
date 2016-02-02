@@ -1,0 +1,87 @@
+﻿using System;
+using Xamarin.Forms;
+using RebuyFormsRating.Droid;
+using System.Threading.Tasks;
+using Android.App;
+using Android.Views;
+using Android.Widget;
+using Android.Content;
+using Xamarin.Forms.Platform.Android;
+
+[assembly: Dependency(typeof(ActionSheet))]
+namespace RebuyFormsRating.Droid
+{
+    public class ActionSheet : IActionSheet
+    {
+        private TaskCompletionSource<String> tcs = null;
+        private String strCancel;
+        private AlertDialog dialog = null;
+
+        public Task<String> UseActionSheet(Page p, String title, String cancel, params String[] buttons)
+        {
+            if (tcs != null) {
+                tcs.Task.Dispose();
+            }
+
+            tcs = new TaskCompletionSource<string>();
+            strCancel = cancel;
+
+            try {
+                var act = (Activity) Forms.Context;
+                if (act != null) {
+                    createDialog(title, cancel, buttons);
+                    if (dialog != null) {
+                        dialog.Show();
+                    }
+                }
+            } catch(Exception) {
+            }
+
+            return tcs.Task;
+        }
+
+        private void createDialog(string title, string cancel, params string[] buttons)
+        {
+            var adb = new AlertDialog.Builder(Forms.Context);
+            var inflater = LayoutInflater.FromContext(Forms.Context);
+            var v = inflater.Inflate(Resource.Layout.CustomActionSheet, null);
+            v.SetBackgroundColor(Color.White.ToAndroid());
+
+            var tv = (TextView) v.FindViewById(Resource.Id.message);
+            if (tv != null) {
+                tv.Text = title;
+            }
+
+            var lv = (Android.Widget.ListView) v.FindViewById(Resource.Id.actionList);
+            if (lv != null) {
+                var strAdapter = new ArrayAdapter(Forms.Context.ApplicationContext, Resource.Layout.TextViewItem, buttons);
+                lv.Adapter = strAdapter;
+                lv.ItemClick += lv_ItemClick;
+            }
+
+            adb.SetView(v);
+            adb.SetNegativeButton(cancel, OnItemSelect);
+            adb.SetCancelable(false);
+
+            dialog = adb.Create();
+        }
+
+        void lv_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var lv = sender as Android.Widget.ListView;
+            if (lv != null) {
+                var s = lv.GetItemAtPosition(e.Position).ToString();
+                if (!String.IsNullOrEmpty(s)) {
+                    tcs.TrySetResult(s);
+                    dialog.Dismiss();
+                }
+            }
+        }
+
+        private void OnItemSelect(Object sender, DialogClickEventArgs e)
+        {
+            tcs.TrySetResult(strCancel);
+            dialog.Dismiss();
+        }
+    }
+}

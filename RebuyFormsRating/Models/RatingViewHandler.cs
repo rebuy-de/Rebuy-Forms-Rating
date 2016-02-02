@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using RebuyFormsRating.Common.Services;
 using Xamarin.Forms;
-using Acr.UserDialogs;
-using System.Threading.Tasks;
 
 namespace RebuyFormsRating.Models
 {
     public class RatingViewHandler
     {
+        private Page page;
+
         public bool IsRated {
             get { return Settings.IsRated; }
             set { Settings.IsRated = value; }
@@ -30,6 +32,11 @@ namespace RebuyFormsRating.Models
         public string RateNowMessage { set; get; } = "Jetzt bewerten";
         public string DisturbMessage { set; get; } = "Nein, danke";
 
+        public RatingViewHandler(Page page)
+        {
+            this.page = page;
+        }
+
         public void OpenRatingViewIfNeeded(string appStoreId)
         {
             if (String.IsNullOrWhiteSpace(VersionNumber) || VersionNumber != DependencyService.Get<IInfoService>().AppVersionCode) {
@@ -45,10 +52,11 @@ namespace RebuyFormsRating.Models
 
         private async Task showActionSheet(string appStoreId)
         {
-            var action = await UserDialogs.Instance.ActionSheetAsync(
+            var actionSheet = DependencyService.Get<IActionSheet>();
+            var action = await actionSheet.UseActionSheet(
+                page,
                 RatingMessage,
                 RateLaterMessage,
-                null,
                 RateNowMessage,
                 DisturbMessage
             );

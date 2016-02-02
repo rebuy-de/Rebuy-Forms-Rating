@@ -24,7 +24,7 @@ namespace RatingViewSample
         protected override void OnStart()
         {
             // Handle when your app starts
-            var ratingViewHandler = new RatingViewHandler() {
+            var ratingViewHandler = new RatingViewHandler(MainPage) {
                 UsesBeforeRating = 2
             };
             //The parameter is only a default apple appStoreId
