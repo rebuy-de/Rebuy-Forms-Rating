@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Content;
 using Xamarin.Forms.Platform.Android;
+using System.Collections.Generic;
 
 [assembly: Dependency(typeof(ActionSheet))]
 namespace RebuyFormsRating.Droid
@@ -42,6 +43,8 @@ namespace RebuyFormsRating.Droid
 
         private void createDialog(string title, string cancel, params string[] buttons)
         {
+            var list = new List<string>(buttons);
+            list.Add(cancel);
             var adb = new AlertDialog.Builder(Forms.Context);
             var inflater = LayoutInflater.FromContext(Forms.Context);
             var v = inflater.Inflate(Resource.Layout.CustomActionSheet, null);
@@ -54,13 +57,13 @@ namespace RebuyFormsRating.Droid
 
             var lv = (Android.Widget.ListView) v.FindViewById(Resource.Id.actionList);
             if (lv != null) {
-                var strAdapter = new ArrayAdapter(Forms.Context.ApplicationContext, Resource.Layout.TextViewItem, buttons);
+                var strAdapter = new ArrayAdapter(Forms.Context.ApplicationContext, Resource.Layout.TextViewItem, list);
                 lv.Adapter = strAdapter;
                 lv.ItemClick += lv_ItemClick;
             }
 
             adb.SetView(v);
-            adb.SetNegativeButton(cancel, OnItemSelect);
+//            adb.SetNegativeButton(cancel, OnItemSelect);
             adb.SetCancelable(false);
 
             dialog = adb.Create();

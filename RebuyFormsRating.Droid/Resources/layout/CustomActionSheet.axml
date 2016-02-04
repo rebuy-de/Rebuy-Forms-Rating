@@ -14,17 +14,20 @@
         android:textSize="20sp"
         android:gravity="center"
         android:background="@android:color/background_light"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/dark_gray" />
 <!-- divider -->
     <TextView
         android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:background="@android:color/darker_gray" />
+        android:layout_height="1dp"
+        android:background="@color/light_gray" />
     <ListView
         android:id="@+id/actionList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipChildren="true"
         android:clickable="true"
-        android:background="@android:color/darker_gray" />
+        android:listSelector="@@color/light_gray"
+        android:dividerHeight="1dp"
+        android:divider="@@color/light_gray"
+        android:background="@android:color/white" />
 </LinearLayout>

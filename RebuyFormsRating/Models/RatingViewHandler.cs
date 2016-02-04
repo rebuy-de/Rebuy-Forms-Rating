@@ -37,13 +37,13 @@ namespace RebuyFormsRating.Models
             this.page = page;
         }
 
-        public void OpenRatingViewIfNeeded(string appStoreId)
+        public async Task OpenRatingViewIfNeeded(string appStoreId)
         {
             if (String.IsNullOrWhiteSpace(VersionNumber) || VersionNumber != DependencyService.Get<IInfoService>().AppVersionCode) {
                 resetReminder();
             } else {
                 if (!IsRated && UsageCount >= UsesBeforeRating) {
-                    showActionSheet(appStoreId);
+                    await showActionSheet(appStoreId);
                 }
 
                 UsageCount++;

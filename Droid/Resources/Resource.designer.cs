@@ -28,6 +28,9 @@ namespace RatingViewSample.Droid
 		{
 			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::RatingViewSample.Droid.Resource.String.ApplicationName;
 			global::Xamarin.Forms.Platform.Resource.String.Hello = global::RatingViewSample.Droid.Resource.String.Hello;
+			global::RebuyFormsRating.Droid.Resource.Color.dark_gray = global::RatingViewSample.Droid.Resource.Color.dark_gray;
+			global::RebuyFormsRating.Droid.Resource.Color.light_gray = global::RatingViewSample.Droid.Resource.Color.light_gray;
+			global::RebuyFormsRating.Droid.Resource.Color.teal = global::RatingViewSample.Droid.Resource.Color.teal;
 			global::RebuyFormsRating.Droid.Resource.Id.actionList = global::RatingViewSample.Droid.Resource.Id.actionList;
 			global::RebuyFormsRating.Droid.Resource.Id.listView = global::RatingViewSample.Droid.Resource.Id.listView;
 			global::RebuyFormsRating.Droid.Resource.Id.message = global::RatingViewSample.Droid.Resource.Id.message;
@@ -53,6 +56,28 @@ namespace RatingViewSample.Droid
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040002
+			public const int dark_gray = 2130968578;
+			
+			// aapt resource value: 0x7f040001
+			public const int light_gray = 2130968577;
+			
+			// aapt resource value: 0x7f040000
+			public const int teal = 2130968576;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
@@ -72,17 +97,17 @@ namespace RatingViewSample.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050001
-			public const int actionList = 2131034113;
+			// aapt resource value: 0x7f060001
+			public const int actionList = 2131099649;
 			
-			// aapt resource value: 0x7f050002
-			public const int listView = 2131034114;
+			// aapt resource value: 0x7f060002
+			public const int listView = 2131099650;
 			
-			// aapt resource value: 0x7f050000
-			public const int message = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int message = 2131099648;
 			
-			// aapt resource value: 0x7f050003
-			public const int textItem = 2131034115;
+			// aapt resource value: 0x7f060003
+			public const int textItem = 2131099651;
 			
 			static Id()
 			{
@@ -119,14 +144,14 @@ namespace RatingViewSample.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040002
-			public const int ApplicationName = 2130968578;
+			// aapt resource value: 0x7f050002
+			public const int ApplicationName = 2131034114;
 			
-			// aapt resource value: 0x7f040001
-			public const int Hello = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int Hello = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int library_name = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int library_name = 2131034112;
 			
 			static String()
 			{

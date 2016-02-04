@@ -37,20 +37,42 @@ namespace RebuyFormsRating.Droid
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040002
+			public static int dark_gray = 2130968578;
+			
+			// aapt resource value: 0x7f040001
+			public static int light_gray = 2130968577;
+			
+			// aapt resource value: 0x7f040000
+			public static int teal = 2130968576;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f040001
-			public static int actionList = 2130968577;
+			// aapt resource value: 0x7f050001
+			public static int actionList = 2131034113;
 			
-			// aapt resource value: 0x7f040002
-			public static int listView = 2130968578;
+			// aapt resource value: 0x7f050002
+			public static int listView = 2131034114;
 			
-			// aapt resource value: 0x7f040000
-			public static int message = 2130968576;
+			// aapt resource value: 0x7f050000
+			public static int message = 2131034112;
 			
-			// aapt resource value: 0x7f040003
-			public static int textItem = 2130968579;
+			// aapt resource value: 0x7f050003
+			public static int textItem = 2131034115;
 			
 			static Id()
 			{
