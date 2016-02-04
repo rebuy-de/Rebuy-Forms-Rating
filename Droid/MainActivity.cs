@@ -7,6 +7,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using RebuyFormsRating.Droid;
 
 namespace RatingViewSample.Droid
 {
@@ -18,6 +19,7 @@ namespace RatingViewSample.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            new InfoService();
 
             LoadApplication(new App());
         }
