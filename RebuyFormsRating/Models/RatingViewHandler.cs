@@ -6,10 +6,8 @@ using Xamarin.Forms;
 
 namespace RebuyFormsRating.Models
 {
-    public class RatingViewHandler
+    public class RatingViewHandler : IRatingViewHandler
     {
-        private Page page;
-
         public bool IsRated {
             get { return Settings.IsRated; }
             set { Settings.IsRated = value; }
@@ -32,25 +30,20 @@ namespace RebuyFormsRating.Models
         public string RateNowMessage { set; get; } = "Jetzt bewerten";
         public string DisturbMessage { set; get; } = "Nein, danke";
 
-        public RatingViewHandler(Page page)
-        {
-            this.page = page;
-        }
-
-        public async Task OpenRatingViewIfNeeded(string appStoreId)
+        public async Task OpenRatingViewIfNeeded(Page page, string appStoreId)
         {
             if (String.IsNullOrWhiteSpace(VersionNumber) || VersionNumber != DependencyService.Get<IInfoService>().AppVersionCode) {
                 resetReminder();
             } else {
                 if (!IsRated && UsageCount >= UsesBeforeRating) {
-                    await showActionSheet(appStoreId);
+                    await showActionSheet(page, appStoreId);
                 }
 
                 UsageCount++;
             }
         }
 
-        private async Task showActionSheet(string appStoreId)
+        private async Task showActionSheet(Page page, string appStoreId)
         {
             var actionSheet = DependencyService.Get<IActionSheet>();
             var action = await actionSheet.UseActionSheet(

@@ -24,11 +24,11 @@ namespace RatingViewSample
         protected override void OnStart()
         {
             // Handle when your app starts
-            var ratingViewHandler = new RatingViewHandler(MainPage) {
+            var ratingViewHandler = new RatingViewHandler {
                 UsesBeforeRating = 2
             };
-            //The parameter is only a default apple appStoreId
-            ratingViewHandler.OpenRatingViewIfNeeded("100000");
+            //The parameter is the page and a default apple appStoreId
+            ratingViewHandler.OpenRatingViewIfNeeded(MainPage, "100000");
         }
 
         protected override void OnSleep()
