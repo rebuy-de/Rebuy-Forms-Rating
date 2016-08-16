@@ -3,7 +3,7 @@
   <metadata>
     <id>Rebuy-Forms-Rating</id>
     <title>RatingView for Xamarin.Forms</title>
-    <version>1.0.5</version>
+    <version>1.1.0</version>
     <authors>Fokke Vermeulen</authors>
     <owners>reBuy reCommerce GmbH</owners>
     <licenseUrl>https://github.com/rebuy-de/Rebuy-Forms-Rating/blob/master/LICENSE</licenseUrl>
@@ -11,7 +11,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Rebuy-Forms-Rating is a Xamarin.Forms view to let users rate your app in the appstores. Please check the website for further details.</description>
     <summary>Rebuy-Forms-Rating is a Xamarin.Forms view to let users rate your app in the appstores.</summary>
-    <releaseNotes>1.0.5:
+    <releaseNotes>1.1.0:
+        * Change: Update Xamarin Forms 2.3.0.107.
+1.0.5:
 * Change: Add Settings Plugin, because the Applications.Current.Settings are buggy from Xamarin.Forms.
 
 1.0.3:
@@ -29,7 +31,7 @@
     <tags>rating rate RebuyFormsRating AppStore PlayStore apple google xamarin xamarin.forms rebuy unicorns</tags>
     <dependencies>
         <group>
-            <dependency id="Xamarin.Forms" version="1.5.0.6447" />
+            <dependency id="Xamarin.Forms" version="2.3.0.107" />
         </group>
     </dependencies>
   </metadata>
