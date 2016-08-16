@@ -1,5 +1,7 @@
-﻿using System;
+using System;
 using Xamarin.Forms;
+using Plugin.Settings;
+using Plugin.Settings.Abstractions;
 
 namespace RebuyFormsRating
 {
@@ -9,34 +11,30 @@ namespace RebuyFormsRating
         private const string usageCountKey = "usageCount";
         private const string isRatedKey = "isRated";
 
+        private static ISettings AppSettings
+        {
+            get
+            {
+                return CrossSettings.Current;
+            }
+        }
+
         public static string VersionNumber
         {
-            get {
-                object number;
-
-                return Application.Current.Properties.TryGetValue(versionNumberKey, out number) ? (string) number : "";
-            }
-            set { Application.Current.Properties[versionNumberKey] = value; }
+            get { return AppSettings.GetValueOrDefault<string>(versionNumberKey, ""); }
+            set { AppSettings.AddOrUpdateValue(versionNumberKey, value); }
         }
 
         public static int UsageCount
         {
-            get { 
-                object count;
-
-                return Application.Current.Properties.TryGetValue(usageCountKey, out count) ? (int) count : 1;
-            }
-            set { Application.Current.Properties[usageCountKey] = value; }
+            get { return AppSettings.GetValueOrDefault(usageCountKey, 1); }
+            set { AppSettings.AddOrUpdateValue(usageCountKey, value); }
         }
 
         public static bool IsRated
         {
-            get { 
-                object rated;
-
-                return Application.Current.Properties.TryGetValue(isRatedKey, out rated) && (bool) rated; 
-            }
-            set { Application.Current.Properties[isRatedKey] = value; }
+            get { return AppSettings.GetValueOrDefault(isRatedKey, false); }
+            set { AppSettings.AddOrUpdateValue(isRatedKey, value); }
         }
     }
 }

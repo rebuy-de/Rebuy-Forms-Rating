@@ -28,6 +28,16 @@ namespace RatingViewSample.Droid
 		{
 			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::RatingViewSample.Droid.Resource.String.ApplicationName;
 			global::Xamarin.Forms.Platform.Resource.String.Hello = global::RatingViewSample.Droid.Resource.String.Hello;
+			global::RebuyFormsRating.Droid.Resource.Color.dark_gray = global::RatingViewSample.Droid.Resource.Color.dark_gray;
+			global::RebuyFormsRating.Droid.Resource.Color.light_gray = global::RatingViewSample.Droid.Resource.Color.light_gray;
+			global::RebuyFormsRating.Droid.Resource.Color.teal = global::RatingViewSample.Droid.Resource.Color.teal;
+			global::RebuyFormsRating.Droid.Resource.Id.actionList = global::RatingViewSample.Droid.Resource.Id.actionList;
+			global::RebuyFormsRating.Droid.Resource.Id.listView = global::RatingViewSample.Droid.Resource.Id.listView;
+			global::RebuyFormsRating.Droid.Resource.Id.message = global::RatingViewSample.Droid.Resource.Id.message;
+			global::RebuyFormsRating.Droid.Resource.Id.textItem = global::RatingViewSample.Droid.Resource.Id.textItem;
+			global::RebuyFormsRating.Droid.Resource.Layout.CustomActionSheet = global::RatingViewSample.Droid.Resource.Layout.CustomActionSheet;
+			global::RebuyFormsRating.Droid.Resource.Layout.CustomListView = global::RatingViewSample.Droid.Resource.Layout.CustomListView;
+			global::RebuyFormsRating.Droid.Resource.Layout.TextViewItem = global::RatingViewSample.Droid.Resource.Layout.TextViewItem;
 			global::RebuyFormsRating.Droid.Resource.String.ApplicationName = global::RatingViewSample.Droid.Resource.String.ApplicationName;
 			global::RebuyFormsRating.Droid.Resource.String.Hello = global::RatingViewSample.Droid.Resource.String.Hello;
 			global::RebuyFormsRating.Droid.Resource.String.library_name = global::RatingViewSample.Droid.Resource.String.library_name;
@@ -42,6 +52,28 @@ namespace RatingViewSample.Droid
 			}
 			
 			private Attribute()
+			{
+			}
+		}
+		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040002
+			public const int dark_gray = 2130968578;
+			
+			// aapt resource value: 0x7f040001
+			public const int light_gray = 2130968577;
+			
+			// aapt resource value: 0x7f040000
+			public const int teal = 2130968576;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
 			{
 			}
 		}
@@ -62,17 +94,64 @@ namespace RatingViewSample.Droid
 			}
 		}
 		
+		public partial class Id
+		{
+			
+			// aapt resource value: 0x7f060001
+			public const int actionList = 2131099649;
+			
+			// aapt resource value: 0x7f060002
+			public const int listView = 2131099650;
+			
+			// aapt resource value: 0x7f060000
+			public const int message = 2131099648;
+			
+			// aapt resource value: 0x7f060003
+			public const int textItem = 2131099651;
+			
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Id()
+			{
+			}
+		}
+		
+		public partial class Layout
+		{
+			
+			// aapt resource value: 0x7f030000
+			public const int CustomActionSheet = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int CustomListView = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int TextViewItem = 2130903042;
+			
+			static Layout()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Layout()
+			{
+			}
+		}
+		
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f030002
-			public const int ApplicationName = 2130903042;
+			// aapt resource value: 0x7f050002
+			public const int ApplicationName = 2131034114;
 			
-			// aapt resource value: 0x7f030001
-			public const int Hello = 2130903041;
+			// aapt resource value: 0x7f050001
+			public const int Hello = 2131034113;
 			
-			// aapt resource value: 0x7f030000
-			public const int library_name = 2130903040;
+			// aapt resource value: 0x7f050000
+			public const int library_name = 2131034112;
 			
 			static String()
 			{

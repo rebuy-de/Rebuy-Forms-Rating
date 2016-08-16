@@ -37,17 +37,86 @@ namespace RebuyFormsRating.Droid
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f040002
+			public static int dark_gray = 2130968578;
+			
+			// aapt resource value: 0x7f040001
+			public static int light_gray = 2130968577;
+			
+			// aapt resource value: 0x7f040000
+			public static int teal = 2130968576;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
+		public partial class Id
+		{
+			
+			// aapt resource value: 0x7f050001
+			public static int actionList = 2131034113;
+			
+			// aapt resource value: 0x7f050002
+			public static int listView = 2131034114;
+			
+			// aapt resource value: 0x7f050000
+			public static int message = 2131034112;
+			
+			// aapt resource value: 0x7f050003
+			public static int textItem = 2131034115;
+			
+			static Id()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Id()
+			{
+			}
+		}
+		
+		public partial class Layout
+		{
+			
+			// aapt resource value: 0x7f020000
+			public static int CustomActionSheet = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public static int CustomListView = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public static int TextViewItem = 2130837506;
+			
+			static Layout()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Layout()
+			{
+			}
+		}
+		
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f020001
-			public static int ApplicationName = 2130837505;
+			// aapt resource value: 0x7f030001
+			public static int ApplicationName = 2130903041;
 			
-			// aapt resource value: 0x7f020000
-			public static int Hello = 2130837504;
+			// aapt resource value: 0x7f030000
+			public static int Hello = 2130903040;
 			
-			// aapt resource value: 0x7f020002
-			public static int library_name = 2130837506;
+			// aapt resource value: 0x7f030002
+			public static int library_name = 2130903042;
 			
 			static String()
 			{
