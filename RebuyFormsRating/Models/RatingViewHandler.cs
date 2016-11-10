@@ -30,23 +30,24 @@ namespace RebuyFormsRating.Models
         public string RateNowMessage { set; get; } = "Jetzt bewerten";
         public string DisturbMessage { set; get; } = "Nein, danke";
 
-        public async Task OpenRatingViewIfNeeded(Page page, string appStoreId)
+        public async Task OpenRatingViewIfNeeded (Page page, string appStoreId, bool ignoreUsageCount = false)
         {
-            if (String.IsNullOrWhiteSpace(VersionNumber) || VersionNumber != DependencyService.Get<IInfoService>().AppVersionCode) {
-                resetReminder();
+            if (String.IsNullOrWhiteSpace (VersionNumber) || VersionNumber != DependencyService.Get<IInfoService> ().AppVersionCode) {
+                resetReminder ();
             } else {
-                if (!IsRated && UsageCount >= UsesBeforeRating) {
-                    await showActionSheet(page, appStoreId);
+                if (!IsRated && UsageCount >= UsesBeforeRating
+                    || !IsRated && ignoreUsageCount) {
+                    await showActionSheet (page, appStoreId);
                 }
 
                 UsageCount++;
             }
         }
 
-        private async Task showActionSheet(Page page, string appStoreId)
+        private async Task showActionSheet (Page page, string appStoreId)
         {
-            var actionSheet = DependencyService.Get<IActionSheet>();
-            var action = await actionSheet.UseActionSheet(
+            var actionSheet = DependencyService.Get<IActionSheet> ();
+            var action = await actionSheet.UseActionSheet (
                 page,
                 RatingMessage,
                 RateLaterMessage,
@@ -54,50 +55,50 @@ namespace RebuyFormsRating.Models
                 DisturbMessage
             );
 
-            if (action.Equals(RateLaterMessage)) {
-                hideReminder();
-            } else if (action.Equals(RateNowMessage)) {
-                rateNow(appStoreId);
-            } else if (action.Equals(DisturbMessage)) {
-                disableReminder();
+            if (action.Equals (RateLaterMessage)) {
+                hideReminder ();
+            } else if (action.Equals (RateNowMessage)) {
+                rateNow (appStoreId);
+            } else if (action.Equals (DisturbMessage)) {
+                disableReminder ();
             }
         }
 
-        private void resetReminder()
+        private void resetReminder ()
         {
             UsageCount = 1;
-            VersionNumber = DependencyService.Get<IInfoService>().AppVersionCode;
+            VersionNumber = DependencyService.Get<IInfoService> ().AppVersionCode;
             IsRated = false;
         }
 
-        private void rateNow(string appStoreId)
+        private void rateNow (string appStoreId)
         {
             IsRated = true;
-            openStore(appStoreId);
+            openStore (appStoreId);
         }
 
-        private void disableReminder()
+        private void disableReminder ()
         {
             IsRated = true;
         }
 
-        private void hideReminder()
+        private void hideReminder ()
         {
             IsRated = false;
         }
 
-        private void openStore(string appStoreId)
+        private void openStore (string appStoreId)
         {
-            var ratingservice = DependencyService.Get<IRatingService>();
+            var ratingservice = DependencyService.Get<IRatingService> ();
 
             if (ratingservice == null) {
                 return;
             }
 
             if (Device.OS == TargetPlatform.iOS) {
-                ratingservice.OpenStore(appStoreId);
+                ratingservice.OpenStore (appStoreId);
             } else {
-                ratingservice.OpenStore("");
+                ratingservice.OpenStore ("");
             }
         }
     }

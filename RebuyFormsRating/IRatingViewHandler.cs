@@ -22,6 +22,6 @@ namespace RebuyFormsRating
 
         string DisturbMessage { set; get; }
 
-        Task OpenRatingViewIfNeeded(Page page, string appStoreId);
+        Task OpenRatingViewIfNeeded(Page page, string appStoreId, bool ignoreUsageCount = false);
     }
 }
