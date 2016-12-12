@@ -25,19 +25,26 @@ namespace RebuyFormsRating.Models
             set { Settings.VersionNumber = value; }
         }
 
-        public string RatingMessage { set; get; } = "Sie nutzen unsere App gerne? Dann nehmen Sie sich bitte für eine Bewertung einen Moment Zeit! Es dauert nicht länger als eine Minute. Vielen Dank!";
+        public string RatingMessage { set; get; } = "Nehmen Sie sich bitte für eine Bewertung einen Moment Zeit! Es dauert nicht länger als eine Minute. Vielen Dank!";
+        public string RatingQuestionMessage { set; get; } = "Sie nutzen unsere App gerne?";
+        public string RatingYes { set; get; } = "Ja";
+        public string RatingNo { set; get; } = "Nein";
         public string RateLaterMessage { set; get; } = "Später bewerten";
         public string RateNowMessage { set; get; } = "Jetzt bewerten";
         public string DisturbMessage { set; get; } = "Nein, danke";
 
-        public async Task OpenRatingViewIfNeeded (Page page, string appStoreId, bool ignoreUsageCount = false)
+        public async Task OpenRatingViewIfNeeded (Page page, string appStoreId, bool ignoreUsageCount = false, bool withLikeQuestion = true)
         {
             if (String.IsNullOrWhiteSpace (VersionNumber) || VersionNumber != DependencyService.Get<IInfoService> ().AppVersionCode) {
                 resetReminder ();
             } else {
                 if (!IsRated && UsageCount >= UsesBeforeRating
                     || !IsRated && ignoreUsageCount) {
-                    await showActionSheet (page, appStoreId);
+                    if (withLikeQuestion) {
+                        await showActionSheet (page, appStoreId);
+                    } else {
+                        await showFinalActionSheet (page, appStoreId);
+                    }
                 }
 
                 UsageCount++;
@@ -47,13 +54,33 @@ namespace RebuyFormsRating.Models
         private async Task showActionSheet (Page page, string appStoreId)
         {
             var actionSheet = DependencyService.Get<IActionSheet> ();
+
             var action = await actionSheet.UseActionSheet (
                 page,
-                RatingMessage,
-                RateLaterMessage,
-                RateNowMessage,
-                DisturbMessage
-            );
+                RatingQuestionMessage,
+                RatingYes,
+                RatingNo
+                );
+
+            if (action.Equals (RatingYes)) {
+                await showFinalActionSheet (page, appStoreId);
+            } else if (action.Equals (RatingNo)) {
+                hideReminder ();
+            }
+        }
+
+        private async Task showFinalActionSheet (Page page, string appStoreId)
+        {
+
+            var actionSheet = DependencyService.Get<IActionSheet> ();
+
+            var action = await actionSheet.UseActionSheet (
+               page,
+               RatingMessage,
+               RateLaterMessage,
+               RateNowMessage,
+               DisturbMessage
+           );
 
             if (action.Equals (RateLaterMessage)) {
                 hideReminder ();
