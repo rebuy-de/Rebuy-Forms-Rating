@@ -14,7 +14,7 @@
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AssemblyName>RebuyFormsRating.Droid</AssemblyName>
     <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
-    <ReleaseVersion>1.1.1</ReleaseVersion>
+    <ReleaseVersion>1.2.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -93,6 +93,7 @@
     <Compile Include="Common\Services\RatingService.cs" />
     <Compile Include="ActionSheet.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="FeedbackSheet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -105,6 +106,7 @@
     <AndroidResource Include="Resources\layout\CustomListView.axml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\layout\CustomAlertSheet.axml" />
+    <AndroidResource Include="Resources\layout\CustomFeedbackSheet.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

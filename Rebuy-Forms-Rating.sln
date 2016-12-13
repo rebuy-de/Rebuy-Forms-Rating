@@ -141,6 +141,10 @@ Global
 		$3.inheritsSet = Mono
 		$3.inheritsScope = text/x-csharp
 		$3.scope = text/x-csharp
-		version = 1.1.1
+		$3.SpacingAfterMethodDeclarationName = False
+		$3.SpaceAfterMethodCallName = False
+		$3.SpaceBeforeOpenSquareBracket = False
+		$3.SpaceAfterSemicolonsInForStatement = False
+		version = 1.2.0
 	EndGlobalSection
 EndGlobal

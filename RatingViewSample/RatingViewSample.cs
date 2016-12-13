@@ -25,10 +25,11 @@ namespace RatingViewSample
         {
             // Handle when your app starts
             var ratingViewHandler = new RatingViewHandler {
-                UsesBeforeRating = 2
+                UsesBeforeRating = 1
             };
             //The parameter is the page and a default apple appStoreId
-            ratingViewHandler.OpenRatingViewIfNeeded(MainPage, "100000");
+            var feedback = ratingViewHandler.OpenRatingViewIfNeeded(MainPage, "100000", false);
+            var test = feedback;
         }
 
         protected override void OnSleep()
@@ -42,4 +43,3 @@ namespace RatingViewSample
         }
     }
 }
-

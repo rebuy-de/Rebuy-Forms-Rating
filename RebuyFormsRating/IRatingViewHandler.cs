@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using RebuyFormsRating.Models;
 using Xamarin.Forms;
 
 namespace RebuyFormsRating
@@ -22,6 +23,6 @@ namespace RebuyFormsRating
 
         string DisturbMessage { set; get; }
 
-        Task OpenRatingViewIfNeeded(Page page, string appStoreId, bool ignoreUsageCount = false, bool withLikeQuestion = true);
+        Task<Feedback> OpenRatingViewIfNeeded(Page page, string appStoreId, bool ignoreUsageCount = false, bool withLikeQuestion = true);
     }
 }
