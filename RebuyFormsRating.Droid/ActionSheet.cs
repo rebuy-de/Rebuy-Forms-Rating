@@ -28,14 +28,14 @@ namespace RebuyFormsRating.Droid
             strCancel = cancel;
 
             try {
-                var act = (Activity) Forms.Context;
+                var act = (Activity)Forms.Context;
                 if (act != null) {
                     createDialog(title, cancel, buttons);
                     if (dialog != null) {
                         dialog.Show();
                     }
                 }
-            } catch(Exception) {
+            } catch (Exception) {
             }
 
             return tcs.Task;
@@ -45,25 +45,50 @@ namespace RebuyFormsRating.Droid
         {
             var list = new List<string>(buttons);
             list.Add(cancel);
+
             var adb = new AlertDialog.Builder(Forms.Context);
             var inflater = LayoutInflater.FromContext(Forms.Context);
-            var v = inflater.Inflate(Resource.Layout.CustomActionSheet, null);
-            v.SetBackgroundColor(Color.White.ToAndroid());
 
-            var tv = (TextView) v.FindViewById(Resource.Id.message);
-            if (tv != null) {
-                tv.Text = title;
+            if (list.Count == 2) {
+                var v = inflater.Inflate(Resource.Layout.CustomAlertSheet, null);
+                v.SetBackgroundColor(Color.White.ToAndroid());
+
+                var tv = (TextView)v.FindViewById(Resource.Id.qmessage);
+                if (tv != null) {
+                    tv.Text = title;
+                }
+
+                var bv = (Android.Widget.Button)v.FindViewById(Resource.Id.dialogButtonLeft);
+                if (bv != null) {
+                    bv.Text = list[0];
+                    bv.Click += bv_click;
+                }
+
+                var bv_r = (Android.Widget.Button)v.FindViewById(Resource.Id.dialogButtonRight);
+                if (bv_r != null) {
+                    bv_r.Text = list[1];
+                    bv_r.Click += bv_click;
+                }
+                adb.SetView(v);
+            } else {
+                var v = inflater.Inflate(Resource.Layout.CustomActionSheet, null);
+                v.SetBackgroundColor(Color.White.ToAndroid());
+
+                var tv = (TextView)v.FindViewById(Resource.Id.message);
+                if (tv != null) {
+                    tv.Text = title;
+                }
+
+                var lv = (Android.Widget.ListView)v.FindViewById(Resource.Id.actionList);
+                if (lv != null) {
+                    var strAdapter = new ArrayAdapter(Forms.Context.ApplicationContext, Resource.Layout.TextViewItem, list);
+                    lv.Adapter = strAdapter;
+                    lv.ItemClick += lv_ItemClick;
+                }
+
+                adb.SetView(v);
             }
 
-            var lv = (Android.Widget.ListView) v.FindViewById(Resource.Id.actionList);
-            if (lv != null) {
-                var strAdapter = new ArrayAdapter(Forms.Context.ApplicationContext, Resource.Layout.TextViewItem, list);
-                lv.Adapter = strAdapter;
-                lv.ItemClick += lv_ItemClick;
-            }
-
-            adb.SetView(v);
-//            adb.SetNegativeButton(cancel, OnItemSelect);
             adb.SetCancelable(false);
 
             dialog = adb.Create();
@@ -75,8 +100,20 @@ namespace RebuyFormsRating.Droid
             if (lv != null) {
                 var s = lv.GetItemAtPosition(e.Position).ToString();
                 if (!String.IsNullOrEmpty(s)) {
-                    tcs.TrySetResult(s);
                     dialog.Dismiss();
+                    tcs.TrySetResult(s);
+                }
+            }
+        }
+
+        void bv_click(object sender, EventArgs e)
+        {
+            var bv = sender as Android.Widget.Button;
+            if (bv != null) {
+                var s = bv.Text;
+                if (!String.IsNullOrEmpty(s)) {
+                    dialog.Dismiss();
+                    tcs.TrySetResult(s);
                 }
             }
         }
