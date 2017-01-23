@@ -6,16 +6,20 @@ namespace RatingViewSample
 {
     public class App : Application
     {
+        Label FeedbackText;
+
         public App()
         {
+            FeedbackText = new Label {
+                Text = "Welcome to Xamarin Forms Rating",
+                XAlign = TextAlignment.Center
+            };
+
             MainPage = new ContentPage {
                 Content = new StackLayout {
                     VerticalOptions = LayoutOptions.Center,
                     Children = {
-                        new Label {
-                            XAlign = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        }
+                        FeedbackText
                     }
                 }
             };
@@ -28,8 +32,7 @@ namespace RatingViewSample
                 UsesBeforeRating = 1
             };
             //The parameter is the page and a default apple appStoreId
-            var feedback = ratingViewHandler.OpenRatingViewIfNeeded(MainPage, "100000", false);
-            var test = feedback;
+            var feedback = ratingViewHandler.OpenRatingViewIfNeeded(MainPage, "100000", false, true);
         }
 
         protected override void OnSleep()

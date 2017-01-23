@@ -3,7 +3,6 @@ using Foundation;
 using RebuyFormsRating.Common.Services;
 using RebuyFormsRating.IOS;
 using Xamarin.Forms;
-using RebuyFormsRating.Common.Services;
 
 [assembly: Dependency(typeof(InfoService))]
 namespace RebuyFormsRating.IOS
