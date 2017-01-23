@@ -59,6 +59,8 @@ namespace RebuyFormsRating.IOS
                     var tv = dialog.GetTextField(0);
 
                     tcs.TrySetResult(tv?.Text);
+                } else {
+                    tcs.TrySetResult(string.Empty);
                 }
             }
         }

@@ -37,31 +37,29 @@ namespace RebuyFormsRating.Models
         public string FeedbackCancelButton { set; get; } = "Abbrechen";
         public string FeedbackSendButton { set; get; } = "Absenden";
 
-        public async Task<Feedback> OpenRatingViewIfNeeded(Page page, string appStoreId, bool ignoreUsageCount = false, bool withLikeQuestion = true)
+        public async Task<RatingViewResponse> OpenRatingViewIfNeeded(Page page, string appStoreId, bool ignoreUsageCount = false, bool withLikeQuestion = true)
         {
+            var response = new RatingViewResponse(string.Empty);
             if (String.IsNullOrWhiteSpace(VersionNumber) || VersionNumber != DependencyService.Get<IInfoService>().AppVersionCode) {
                 resetReminder();
-
             } else {
-                if (!IsRated && UsageCount >= UsesBeforeRating
-                    || !IsRated && ignoreUsageCount) {
+                if (!IsRated && UsageCount >= UsesBeforeRating || !IsRated && ignoreUsageCount) {
                     if (withLikeQuestion) {
-
-                        return await showActionSheet(page, appStoreId);
+                        response = await showLikeQuestionActionSheet(page, appStoreId);
                     } else {
-                        await showFinalActionSheet(page, appStoreId);
-
-                        return null;
+                        response = await showStoreRatingActionSheet(page, appStoreId);
                     }
                 }
                 UsageCount++;
             }
 
-            return null;
+            return response;
         }
 
-        private async Task<Feedback> showActionSheet(Page page, string appStoreId)
+        private async Task<RatingViewResponse> showLikeQuestionActionSheet(Page page, string appStoreId)
         {
+            var response = new RatingViewResponse(VersionNumber);
+
             var actionSheet = DependencyService.Get<IActionSheet>();
 
             var action = await actionSheet.UseActionSheet(
@@ -69,40 +67,36 @@ namespace RebuyFormsRating.Models
                 RatingQuestionMessage,
                 RatingYes,
                 RatingNo
-                );
+            );
 
             if (action.Equals(RatingYes)) {
-                await showFinalActionSheet(page, appStoreId);
+                response = await showStoreRatingActionSheet(page, appStoreId);
             } else if (action.Equals(RatingNo)) {
                 hideReminder();
 
-                var feedbacktext = await showFeedbackForm(page);
+                var feedbacktext = await showFeedbackActionSheet(page);
 
-                return new Feedback {
-                    FeedbackText = feedbacktext,
-                    Version = VersionNumber,
-                    Platform = Device.OnPlatform("iOS", "Android", "Windows")
-                };
+                response.FeedbackText = feedbacktext;
+                response.ButtonClicked = string.IsNullOrEmpty(feedbacktext) ? Enums.RatingViewButtonTypes.cancelfeedback : Enums.RatingViewButtonTypes.sendfeedback;
             }
-            return null;
+
+            return response;
         }
 
-        private async Task<string> showFeedbackForm(Page page)
+        private async Task<string> showFeedbackActionSheet(Page page)
         {
             var feedbackSheet = DependencyService.Get<IFeedbackSheet>();
 
             var feedback = await feedbackSheet.UseFeedbackSheet(page, FeedbackTitle, FeedbackMessage, FeedbackSendButton, FeedbackCancelButton);
-            if (string.IsNullOrEmpty(feedback)) {
 
-                return null;
-            }
             disableReminder();
 
-            return feedback;
+            return string.IsNullOrEmpty(feedback) ? string.Empty : feedback;
         }
 
-        private async Task showFinalActionSheet(Page page, string appStoreId)
+        private async Task<RatingViewResponse> showStoreRatingActionSheet(Page page, string appStoreId)
         {
+            var response = new RatingViewResponse(VersionNumber);
 
             var actionSheet = DependencyService.Get<IActionSheet>();
 
@@ -116,11 +110,16 @@ namespace RebuyFormsRating.Models
 
             if (action.Equals(RateLaterMessage)) {
                 hideReminder();
+                response.ButtonClicked = Enums.RatingViewButtonTypes.ratelater;
             } else if (action.Equals(RateNowMessage)) {
                 rateNow(appStoreId);
+                response.ButtonClicked = Enums.RatingViewButtonTypes.ratenow;
             } else if (action.Equals(DisturbMessage)) {
                 disableReminder();
+                response.ButtonClicked = Enums.RatingViewButtonTypes.cancelrating;
             }
+
+            return response;
         }
 
         private void resetReminder()
