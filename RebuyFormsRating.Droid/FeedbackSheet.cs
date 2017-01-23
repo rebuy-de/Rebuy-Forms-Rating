@@ -45,7 +45,6 @@ namespace RebuyFormsRating.Droid
             return tcs.Task;
         }
 
-
         private void createDialog(string title, string message)
         {
             var adb = new AlertDialog.Builder(Forms.Context);
@@ -92,6 +91,8 @@ namespace RebuyFormsRating.Droid
                     var tv = (EditText)customFeedbackSheet?.FindViewById(Resource.Id.feedbackText);
 
                     tcs.TrySetResult(tv?.EditableText.ToString());
+                } else {
+                    tcs.TrySetResult(string.Empty);
                 }
                 dialog.Dismiss();
             }
