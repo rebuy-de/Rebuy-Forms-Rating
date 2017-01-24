@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 using RebuyFormsRating.Common.Services;
+using RebuyFormsRating.Helpers;
 using Xamarin.Forms;
 
 namespace RebuyFormsRating.Models
