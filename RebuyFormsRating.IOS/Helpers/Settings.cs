@@ -39,6 +39,5 @@ namespace RebuyFormsRating.IOS.Helpers
         AppSettings.AddOrUpdateValue<string>(SettingsKey, value);
       }
     }
-
   }
 }*/

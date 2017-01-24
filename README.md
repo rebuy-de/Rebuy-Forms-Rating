@@ -5,7 +5,7 @@ Rebuy-Forms-Rating is a Xamarin.Forms ActionSheet for rating the app in the apps
 
 We are very eager about your feedback, so do not hesitate to create an issue or feel free to improve our code via a contribution.
 
-###Features 
+###Features
  - Fully Xamarin.Forms compatible.
 
 ###Setup and Usage
@@ -24,3 +24,17 @@ protected override void OnStart()
 }
 ```
 
+#### FAKE options / Tasks
+
+Execute `bin/fake <taskname>` to run a task or `bin/fake --<optionname>` for fake cli options. First run `bin/fake install`.
+
+Available tasks:
+
+```
+* Restore
+  Clean solution and afterwards restore all packages
+
+* Build
+  Build all projects of solution
+
+```
