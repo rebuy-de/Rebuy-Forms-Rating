@@ -34,7 +34,7 @@ namespace RebuyFormsRating.Models
         public string RateNowMessage { set; get; } = "Jetzt bewerten";
         public string DisturbMessage { set; get; } = "Nein, danke";
         public string FeedbackTitle { set; get; } = "Gib uns Feedback";
-        public string FeedbackMessage { set; get; } = "Es tut uns leid das zu hören. Bitte gib uns Feedback damit wir eventuell vorhandene Probleme beheben können.";
+        public string FeedbackMessage { set; get; } = "Es tut uns leid, dass du mit unserer App unzufrieden bist. Teile uns mit wie wir deine reBuy-Erfahrung verbessern können.";
         public string FeedbackCancelButton { set; get; } = "Abbrechen";
         public string FeedbackSendButton { set; get; } = "Absenden";
 

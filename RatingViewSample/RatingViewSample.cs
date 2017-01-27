@@ -12,7 +12,7 @@ namespace RatingViewSample
         {
             FeedbackText = new Label {
                 Text = "Welcome to Xamarin Forms Rating",
-                XAlign = TextAlignment.Center
+                HorizontalTextAlignment = TextAlignment.Center
             };
 
             MainPage = new ContentPage {
