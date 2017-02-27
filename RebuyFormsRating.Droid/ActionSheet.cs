@@ -32,6 +32,7 @@ namespace RebuyFormsRating.Droid
                 if (act != null) {
                     createDialog(title, cancel, buttons);
                     if (dialog != null) {
+                        dialog.SetCanceledOnTouchOutside(true);
                         dialog.Show();
                     }
                 }

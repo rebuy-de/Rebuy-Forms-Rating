@@ -4,6 +4,7 @@
 bin/
 obj/
 *.userprefs
+.droidres/
 
 ### OSX ###
 .DS_Store

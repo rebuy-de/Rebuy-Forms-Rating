@@ -2217,8 +2217,8 @@ namespace RebuyFormsRating.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b0096
-			public static int action0 = 2131427478;
+			// aapt resource value: 0x7f0b0097
+			public static int action0 = 2131427479;
 			
 			// aapt resource value: 0x7f0b006a
 			public static int actionList = 2131427434;
@@ -2247,8 +2247,8 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b005b
 			public static int action_context_bar = 2131427419;
 			
-			// aapt resource value: 0x7f0b009a
-			public static int action_divider = 2131427482;
+			// aapt resource value: 0x7f0b009b
+			public static int action_divider = 2131427483;
 			
 			// aapt resource value: 0x7f0b0004
 			public static int action_menu_divider = 2131427332;
@@ -2283,8 +2283,8 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b0044
 			public static int buttonPanel = 2131427396;
 			
-			// aapt resource value: 0x7f0b0097
-			public static int cancel_action = 2131427479;
+			// aapt resource value: 0x7f0b0098
+			public static int cancel_action = 2131427480;
 			
 			// aapt resource value: 0x7f0b0014
 			public static int center = 2131427348;
@@ -2298,8 +2298,8 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b0052
 			public static int checkbox = 2131427410;
 			
-			// aapt resource value: 0x7f0b009d
-			public static int chronometer = 2131427485;
+			// aapt resource value: 0x7f0b009e
+			public static int chronometer = 2131427486;
 			
 			// aapt resource value: 0x7f0b001d
 			public static int clip_horizontal = 2131427357;
@@ -2325,20 +2325,20 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b0040
 			public static int default_activity_button = 2131427392;
 			
-			// aapt resource value: 0x7f0b0075
-			public static int design_bottom_sheet = 2131427445;
+			// aapt resource value: 0x7f0b0076
+			public static int design_bottom_sheet = 2131427446;
+			
+			// aapt resource value: 0x7f0b007d
+			public static int design_menu_item_action_area = 2131427453;
 			
 			// aapt resource value: 0x7f0b007c
-			public static int design_menu_item_action_area = 2131427452;
+			public static int design_menu_item_action_area_stub = 2131427452;
 			
 			// aapt resource value: 0x7f0b007b
-			public static int design_menu_item_action_area_stub = 2131427451;
+			public static int design_menu_item_text = 2131427451;
 			
 			// aapt resource value: 0x7f0b007a
-			public static int design_menu_item_text = 2131427450;
-			
-			// aapt resource value: 0x7f0b0079
-			public static int design_navigation_view = 2131427449;
+			public static int design_navigation_view = 2131427450;
 			
 			// aapt resource value: 0x7f0b006c
 			public static int dialogButtonLeft = 2131427436;
@@ -2355,8 +2355,8 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b0017
 			public static int end = 2131427351;
 			
-			// aapt resource value: 0x7f0b00a2
-			public static int end_padder = 2131427490;
+			// aapt resource value: 0x7f0b00a3
+			public static int end_padder = 2131427491;
 			
 			// aapt resource value: 0x7f0b000b
 			public static int enterAlways = 2131427339;
@@ -2373,11 +2373,14 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b0051
 			public static int expanded_menu = 2131427409;
 			
-			// aapt resource value: 0x7f0b0071
-			public static int feedbackDialogButtonCancel = 2131427441;
-			
 			// aapt resource value: 0x7f0b0072
-			public static int feedbackDialogButtonSend = 2131427442;
+			public static int feedbackDialogButtonCancel = 2131427442;
+			
+			// aapt resource value: 0x7f0b0073
+			public static int feedbackDialogButtonSend = 2131427443;
+			
+			// aapt resource value: 0x7f0b0071
+			public static int feedbackMail = 2131427441;
 			
 			// aapt resource value: 0x7f0b006f
 			public static int feedbackMessage = 2131427439;
@@ -2415,8 +2418,8 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b003f
 			public static int image = 2131427391;
 			
-			// aapt resource value: 0x7f0b00a1
-			public static int info = 2131427489;
+			// aapt resource value: 0x7f0b00a2
+			public static int info = 2131427490;
 			
 			// aapt resource value: 0x7f0b0001
 			public static int item_touch_helper_previous_elevation = 2131427329;
@@ -2424,23 +2427,23 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b0019
 			public static int left = 2131427353;
 			
-			// aapt resource value: 0x7f0b009b
-			public static int line1 = 2131427483;
+			// aapt resource value: 0x7f0b009c
+			public static int line1 = 2131427484;
 			
-			// aapt resource value: 0x7f0b009f
-			public static int line3 = 2131427487;
+			// aapt resource value: 0x7f0b00a0
+			public static int line3 = 2131427488;
 			
 			// aapt resource value: 0x7f0b0025
 			public static int listMode = 2131427365;
 			
-			// aapt resource value: 0x7f0b0073
-			public static int listView = 2131427443;
+			// aapt resource value: 0x7f0b0074
+			public static int listView = 2131427444;
 			
 			// aapt resource value: 0x7f0b0041
 			public static int list_item = 2131427393;
 			
-			// aapt resource value: 0x7f0b0099
-			public static int media_actions = 2131427481;
+			// aapt resource value: 0x7f0b009a
+			public static int media_actions = 2131427482;
 			
 			// aapt resource value: 0x7f0b0069
 			public static int message = 2131427433;
@@ -2451,83 +2454,83 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b0021
 			public static int mini = 2131427361;
 			
-			// aapt resource value: 0x7f0b0088
-			public static int mr_art = 2131427464;
-			
-			// aapt resource value: 0x7f0b007d
-			public static int mr_chooser_list = 2131427453;
-			
-			// aapt resource value: 0x7f0b0080
-			public static int mr_chooser_route_desc = 2131427456;
+			// aapt resource value: 0x7f0b0089
+			public static int mr_art = 2131427465;
 			
 			// aapt resource value: 0x7f0b007e
-			public static int mr_chooser_route_icon = 2131427454;
-			
-			// aapt resource value: 0x7f0b007f
-			public static int mr_chooser_route_name = 2131427455;
-			
-			// aapt resource value: 0x7f0b0085
-			public static int mr_close = 2131427461;
-			
-			// aapt resource value: 0x7f0b008b
-			public static int mr_control_divider = 2131427467;
-			
-			// aapt resource value: 0x7f0b0091
-			public static int mr_control_play_pause = 2131427473;
-			
-			// aapt resource value: 0x7f0b0094
-			public static int mr_control_subtitle = 2131427476;
-			
-			// aapt resource value: 0x7f0b0093
-			public static int mr_control_title = 2131427475;
-			
-			// aapt resource value: 0x7f0b0092
-			public static int mr_control_title_container = 2131427474;
-			
-			// aapt resource value: 0x7f0b0086
-			public static int mr_custom_control = 2131427462;
-			
-			// aapt resource value: 0x7f0b0087
-			public static int mr_default_control = 2131427463;
-			
-			// aapt resource value: 0x7f0b0082
-			public static int mr_dialog_area = 2131427458;
+			public static int mr_chooser_list = 2131427454;
 			
 			// aapt resource value: 0x7f0b0081
-			public static int mr_expandable_area = 2131427457;
+			public static int mr_chooser_route_desc = 2131427457;
 			
-			// aapt resource value: 0x7f0b0095
-			public static int mr_group_expand_collapse = 2131427477;
+			// aapt resource value: 0x7f0b007f
+			public static int mr_chooser_route_icon = 2131427455;
 			
-			// aapt resource value: 0x7f0b0089
-			public static int mr_media_main_control = 2131427465;
+			// aapt resource value: 0x7f0b0080
+			public static int mr_chooser_route_name = 2131427456;
 			
-			// aapt resource value: 0x7f0b0084
-			public static int mr_name = 2131427460;
-			
-			// aapt resource value: 0x7f0b008a
-			public static int mr_playback_control = 2131427466;
-			
-			// aapt resource value: 0x7f0b0083
-			public static int mr_title_bar = 2131427459;
+			// aapt resource value: 0x7f0b0086
+			public static int mr_close = 2131427462;
 			
 			// aapt resource value: 0x7f0b008c
-			public static int mr_volume_control = 2131427468;
+			public static int mr_control_divider = 2131427468;
+			
+			// aapt resource value: 0x7f0b0092
+			public static int mr_control_play_pause = 2131427474;
+			
+			// aapt resource value: 0x7f0b0095
+			public static int mr_control_subtitle = 2131427477;
+			
+			// aapt resource value: 0x7f0b0094
+			public static int mr_control_title = 2131427476;
+			
+			// aapt resource value: 0x7f0b0093
+			public static int mr_control_title_container = 2131427475;
+			
+			// aapt resource value: 0x7f0b0087
+			public static int mr_custom_control = 2131427463;
+			
+			// aapt resource value: 0x7f0b0088
+			public static int mr_default_control = 2131427464;
+			
+			// aapt resource value: 0x7f0b0083
+			public static int mr_dialog_area = 2131427459;
+			
+			// aapt resource value: 0x7f0b0082
+			public static int mr_expandable_area = 2131427458;
+			
+			// aapt resource value: 0x7f0b0096
+			public static int mr_group_expand_collapse = 2131427478;
+			
+			// aapt resource value: 0x7f0b008a
+			public static int mr_media_main_control = 2131427466;
+			
+			// aapt resource value: 0x7f0b0085
+			public static int mr_name = 2131427461;
+			
+			// aapt resource value: 0x7f0b008b
+			public static int mr_playback_control = 2131427467;
+			
+			// aapt resource value: 0x7f0b0084
+			public static int mr_title_bar = 2131427460;
 			
 			// aapt resource value: 0x7f0b008d
-			public static int mr_volume_group_list = 2131427469;
+			public static int mr_volume_control = 2131427469;
 			
-			// aapt resource value: 0x7f0b008f
-			public static int mr_volume_item_icon = 2131427471;
+			// aapt resource value: 0x7f0b008e
+			public static int mr_volume_group_list = 2131427470;
 			
 			// aapt resource value: 0x7f0b0090
-			public static int mr_volume_slider = 2131427472;
+			public static int mr_volume_item_icon = 2131427472;
+			
+			// aapt resource value: 0x7f0b0091
+			public static int mr_volume_slider = 2131427473;
 			
 			// aapt resource value: 0x7f0b002e
 			public static int multiply = 2131427374;
 			
-			// aapt resource value: 0x7f0b0078
-			public static int navigation_header_container = 2131427448;
+			// aapt resource value: 0x7f0b0079
+			public static int navigation_header_container = 2131427449;
 			
 			// aapt resource value: 0x7f0b0038
 			public static int never = 2131427384;
@@ -2625,11 +2628,11 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b002b
 			public static int showTitle = 2131427371;
 			
-			// aapt resource value: 0x7f0b0077
-			public static int snackbar_action = 2131427447;
+			// aapt resource value: 0x7f0b0078
+			public static int snackbar_action = 2131427448;
 			
-			// aapt resource value: 0x7f0b0076
-			public static int snackbar_text = 2131427446;
+			// aapt resource value: 0x7f0b0077
+			public static int snackbar_text = 2131427447;
 			
 			// aapt resource value: 0x7f0b000f
 			public static int snap = 2131427343;
@@ -2652,8 +2655,8 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b001b
 			public static int start = 2131427355;
 			
-			// aapt resource value: 0x7f0b0098
-			public static int status_bar_latest_event_content = 2131427480;
+			// aapt resource value: 0x7f0b0099
+			public static int status_bar_latest_event_content = 2131427481;
 			
 			// aapt resource value: 0x7f0b0065
 			public static int submit_area = 2131427429;
@@ -2661,20 +2664,20 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b0026
 			public static int tabMode = 2131427366;
 			
-			// aapt resource value: 0x7f0b00a0
-			public static int text = 2131427488;
+			// aapt resource value: 0x7f0b00a1
+			public static int text = 2131427489;
 			
-			// aapt resource value: 0x7f0b009e
-			public static int text2 = 2131427486;
+			// aapt resource value: 0x7f0b009f
+			public static int text2 = 2131427487;
 			
-			// aapt resource value: 0x7f0b00a3
-			public static int textItem = 2131427491;
+			// aapt resource value: 0x7f0b00a4
+			public static int textItem = 2131427492;
 			
 			// aapt resource value: 0x7f0b004d
 			public static int textSpacerNoButtons = 2131427405;
 			
-			// aapt resource value: 0x7f0b009c
-			public static int time = 2131427484;
+			// aapt resource value: 0x7f0b009d
+			public static int time = 2131427485;
 			
 			// aapt resource value: 0x7f0b0043
 			public static int title = 2131427395;
@@ -2688,8 +2691,8 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b0047
 			public static int topPanel = 2131427399;
 			
-			// aapt resource value: 0x7f0b0074
-			public static int touch_outside = 2131427444;
+			// aapt resource value: 0x7f0b0075
+			public static int touch_outside = 2131427445;
 			
 			// aapt resource value: 0x7f0b000a
 			public static int up = 2131427338;
@@ -2700,8 +2703,8 @@ namespace RebuyFormsRating.Droid
 			// aapt resource value: 0x7f0b0000
 			public static int view_offset_helper = 2131427328;
 			
-			// aapt resource value: 0x7f0b008e
-			public static int volume_item_container = 2131427470;
+			// aapt resource value: 0x7f0b008f
+			public static int volume_item_container = 2131427471;
 			
 			// aapt resource value: 0x7f0b0039
 			public static int withText = 2131427385;
@@ -3042,6 +3045,9 @@ namespace RebuyFormsRating.Droid
 			
 			// aapt resource value: 0x7f060011
 			public static int character_counter_pattern = 2131099665;
+			
+			// aapt resource value: 0x7f060028
+			public static int email = 2131099688;
 			
 			// aapt resource value: 0x7f060027
 			public static int feedback = 2131099687;
