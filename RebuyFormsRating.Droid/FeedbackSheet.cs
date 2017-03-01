@@ -5,37 +5,39 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Views;
 using Android.Widget;
-using Android.Content;
 using Xamarin.Forms.Platform.Android;
-using System.Collections.Generic;
 using RebuyFormsRating.Common.Services;
+using RebuyFormsRating.Models;
 
 [assembly: Dependency(typeof(FeedbackSheet))]
 namespace RebuyFormsRating.Droid
 {
     public class FeedbackSheet : IFeedbackSheet
     {
-        private TaskCompletionSource<String> tcs = null;
+        private TaskCompletionSource<RatingViewFeedback> tcs = null;
         private String strCancel;
         private String strSend;
+        private String strEmailInvalid;
         private AlertDialog dialog = null;
         private Android.Views.View customFeedbackSheet = null;
 
-        public Task<String> UseFeedbackSheet(Page page, String title, String message, String send, String cancel)
+        public Task<RatingViewFeedback> UseFeedbackSheet(Page page, String title, String message, String emailinvalid, String send, String cancel)
         {
             if (tcs != null) {
                 tcs.Task.Dispose();
             }
 
-            tcs = new TaskCompletionSource<string>();
+            tcs = new TaskCompletionSource<RatingViewFeedback>();
             strCancel = cancel;
             strSend = send;
+            strEmailInvalid = emailinvalid;
 
             try {
                 var act = (Activity)Forms.Context;
                 if (act != null) {
                     createDialog(title, message);
                     if (dialog != null) {
+                        dialog.SetCanceledOnTouchOutside(true);
                         dialog.Show();
                     }
                 }
@@ -76,7 +78,6 @@ namespace RebuyFormsRating.Droid
             }
             adb.SetView(customFeedbackSheet);
 
-
             adb.SetCancelable(false);
 
             dialog = adb.Create();
@@ -86,16 +87,33 @@ namespace RebuyFormsRating.Droid
         {
             var bv = sender as Android.Widget.Button;
             if (bv != null) {
+                var feedback = new RatingViewFeedback();
                 var s = bv.Text;
                 if (String.Equals(s, strSend)) {
                     var tv = (EditText)customFeedbackSheet?.FindViewById(Resource.Id.feedbackText);
+                    var mv = (EditText)customFeedbackSheet?.FindViewById(Resource.Id.feedbackMail);
 
-                    tcs.TrySetResult(tv?.EditableText.ToString());
-                } else {
-                    tcs.TrySetResult(string.Empty);
+                    if (!string.IsNullOrEmpty(mv.EditableText.ToString()) && !isValidEmail(mv.EditableText.ToString())) {
+                        mv.SetError(strEmailInvalid, null);
+
+                        return;
+                    }
+
+                    feedback.Feedback = tv.EditableText.ToString();
+                    feedback.Email = mv.EditableText.ToString();
                 }
-                dialog.Dismiss();
+                tcs.TrySetResult(feedback);
             }
+            dialog.Dismiss();
+        }
+
+        bool isValidEmail(string target)
+        {
+            if (string.IsNullOrWhiteSpace(target)) {
+                return false;
+            }
+
+            return Android.Util.Patterns.EmailAddress.Matcher(target).Matches();
         }
     }
 }

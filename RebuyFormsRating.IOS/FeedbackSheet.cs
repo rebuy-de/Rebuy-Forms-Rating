@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using RebuyFormsRating.Common.Services;
 using RebuyFormsRating.IOS;
+using RebuyFormsRating.Models;
 using UIKit;
 using Xamarin.Forms;
 
@@ -10,18 +11,18 @@ namespace RebuyFormsRating.IOS
 {
     public class FeedbackSheet : IFeedbackSheet
     {
-        private TaskCompletionSource<string> tcs = null;
+        private TaskCompletionSource<RatingViewFeedback> tcs = null;
         private String strCancel;
         private String strSend;
         private UIAlertView dialog = null;
 
-        public async Task<string> UseFeedbackSheet(Page page, string title, string message, string send, string cancel)
+        public async Task<RatingViewFeedback> UseFeedbackSheet(Page page, string title, string message, string emailinvalidmessage, string send, string cancel)
         {
             if (tcs != null) {
                 tcs.Task.Dispose();
             }
 
-            tcs = new TaskCompletionSource<string>();
+            tcs = new TaskCompletionSource<RatingViewFeedback>();
             strCancel = cancel;
             strSend = send;
 
@@ -55,13 +56,13 @@ namespace RebuyFormsRating.IOS
         {
             var bv = e as UIButtonEventArgs;
             if (bv != null) {
+                var feedback = new RatingViewFeedback();
                 if (bv.ButtonIndex == 0) {
                     var tv = dialog.GetTextField(0);
-
-                    tcs.TrySetResult(tv?.Text);
-                } else {
-                    tcs.TrySetResult(string.Empty);
+                    feedback.Feedback = tv?.Text;
                 }
+
+                tcs.TrySetResult(feedback);
             }
         }
     }

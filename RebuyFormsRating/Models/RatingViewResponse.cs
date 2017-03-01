@@ -9,6 +9,7 @@ namespace RebuyFormsRating.Models
         public string Version { set; get; }
         public string FeedbackText { set; get; }
         public string Platform { set; get; }
+        public string UserEmail { set; get; }
         public RatingViewButtonTypes ButtonClicked { set; get; }
 
         public RatingViewResponse(string version) {

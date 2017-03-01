@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@android:color/background_dark">
+    android:background="@android:color/background_light">
     <TextView
         android:id="@+id/feedbackTitle"
         android:editable="false"
@@ -29,7 +29,7 @@
         android:background="@android:color/background_light"
         android:textColor="@color/dark_gray" />
 <!-- divider -->
-    <TextView
+    <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="@color/light_gray" />
@@ -39,9 +39,20 @@
         android:hint="@string/feedback"
         android:textColorHint="@color/light_gray"
         android:textColor="@color/dark_gray"
-        android:lines="5"
+        android:lines="4"
         android:layout_marginTop="5dp"
         android:inputType="textMultiLine"
+        android:layout_width="fill_parent"
+        android:gravity="top" />
+    <EditText
+        android:id="@+id/feedbackMail"
+        android:layout_height="match_parent"
+        android:hint="@string/email"
+        android:textColorHint="@color/light_gray"
+        android:textColor="@color/dark_gray"
+        android:lines="1"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="1dp"
         android:layout_width="fill_parent"
         android:gravity="top" />
     <LinearLayout

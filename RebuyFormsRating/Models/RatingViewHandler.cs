@@ -35,6 +35,7 @@ namespace RebuyFormsRating.Models
         public string DisturbMessage { set; get; } = "Nein, danke";
         public string FeedbackTitle { set; get; } = "Gib uns Feedback";
         public string FeedbackMessage { set; get; } = "Es tut uns leid, dass du mit unserer App unzufrieden bist. Teile uns mit wie wir deine reBuy-Erfahrung verbessern können.";
+        public string FeedbackEmailInvalidHintMessage { set; get; } = "Ungültige E-Mail-Adresse";
         public string FeedbackCancelButton { set; get; } = "Abbrechen";
         public string FeedbackSendButton { set; get; } = "Absenden";
 
@@ -77,22 +78,23 @@ namespace RebuyFormsRating.Models
 
                 var feedbacktext = await showFeedbackActionSheet(page);
 
-                response.FeedbackText = feedbacktext;
-                response.ButtonClicked = string.IsNullOrEmpty(feedbacktext) ? Enums.RatingViewButtonTypes.cancelfeedback : Enums.RatingViewButtonTypes.sendfeedback;
+                response.FeedbackText = feedbacktext?.Feedback;
+                response.UserEmail = feedbacktext?.Email;
+                response.ButtonClicked = string.IsNullOrEmpty(feedbacktext.Feedback) ? Enums.RatingViewButtonTypes.cancelfeedback : Enums.RatingViewButtonTypes.sendfeedback;
             }
 
             return response;
         }
 
-        private async Task<string> showFeedbackActionSheet(Page page)
+        private async Task<RatingViewFeedback> showFeedbackActionSheet(Page page)
         {
             var feedbackSheet = DependencyService.Get<IFeedbackSheet>();
 
-            var feedback = await feedbackSheet.UseFeedbackSheet(page, FeedbackTitle, FeedbackMessage, FeedbackSendButton, FeedbackCancelButton);
+            var feedback = await feedbackSheet.UseFeedbackSheet(page, FeedbackTitle, FeedbackMessage, FeedbackEmailInvalidHintMessage, FeedbackSendButton, FeedbackCancelButton);
 
             disableReminder();
 
-            return string.IsNullOrEmpty(feedback) ? string.Empty : feedback;
+            return feedback;
         }
 
         private async Task<RatingViewResponse> showStoreRatingActionSheet(Page page, string appStoreId)
