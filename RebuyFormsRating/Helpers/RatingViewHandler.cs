@@ -90,6 +90,7 @@ namespace RebuyFormsRating.Helpers
             );
 
             if (action.Equals(FeedbackTitle)) {
+                disableReminder();
                 response.ButtonClicked = Enums.RatingViewButtonTypes.feedbacknow;
             } else if (action.Equals(DisturbMessage)) {
                 disableReminder();
