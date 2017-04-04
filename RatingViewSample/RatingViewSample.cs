@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using RebuyFormsRating.Models;
+using RebuyFormsRating.Helpers;
 
 namespace RatingViewSample
 {

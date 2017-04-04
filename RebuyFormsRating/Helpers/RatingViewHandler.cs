@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using RebuyFormsRating.Common.Services;
-using RebuyFormsRating.Helpers;
+using RebuyFormsRating.Models;
 using Xamarin.Forms;
 
-namespace RebuyFormsRating.Models
+namespace RebuyFormsRating.Helpers
 {
     public class RatingViewHandler : IRatingViewHandler
     {
@@ -32,12 +31,9 @@ namespace RebuyFormsRating.Models
         public string RatingNo { set; get; } = "Nein";
         public string RateLaterMessage { set; get; } = "Später bewerten";
         public string RateNowMessage { set; get; } = "Jetzt bewerten";
-        public string DisturbMessage { set; get; } = "Nein, danke";
-        public string FeedbackTitle { set; get; } = "Gib uns Feedback";
+        public string DisturbMessage { set; get; } = "Nein, Danke";
+        public string FeedbackTitle { set; get; } = "Sende Feedback";
         public string FeedbackMessage { set; get; } = "Es tut uns leid, dass du mit unserer App unzufrieden bist. Teile uns mit wie wir deine reBuy-Erfahrung verbessern können.";
-        public string FeedbackEmailInvalidHintMessage { set; get; } = "Ungültige E-Mail-Adresse";
-        public string FeedbackCancelButton { set; get; } = "Abbrechen";
-        public string FeedbackSendButton { set; get; } = "Absenden";
 
         public async Task<RatingViewResponse> OpenRatingViewIfNeeded(Page page, string appStoreId, bool ignoreUsageCount = false, bool withLikeQuestion = true)
         {
@@ -74,27 +70,33 @@ namespace RebuyFormsRating.Models
             if (action.Equals(RatingYes)) {
                 response = await showStoreRatingActionSheet(page, appStoreId);
             } else if (action.Equals(RatingNo)) {
-                hideReminder();
-
-                var feedbacktext = await showFeedbackActionSheet(page);
-
-                response.FeedbackText = feedbacktext?.Feedback;
-                response.UserEmail = feedbacktext?.Email;
-                response.ButtonClicked = string.IsNullOrEmpty(feedbacktext.Feedback) ? Enums.RatingViewButtonTypes.cancelfeedback : Enums.RatingViewButtonTypes.sendfeedback;
+                response = await showFeedbackQuestionActionSheet(page, appStoreId);
             }
 
             return response;
         }
 
-        private async Task<RatingViewFeedback> showFeedbackActionSheet(Page page)
+        private async Task<RatingViewResponse> showFeedbackQuestionActionSheet(Page page, string appStoreId)
         {
-            var feedbackSheet = DependencyService.Get<IFeedbackSheet>();
+            var response = new RatingViewResponse(VersionNumber);
 
-            var feedback = await feedbackSheet.UseFeedbackSheet(page, FeedbackTitle, FeedbackMessage, FeedbackEmailInvalidHintMessage, FeedbackSendButton, FeedbackCancelButton);
+            var actionSheet = DependencyService.Get<IActionSheet>();
 
-            disableReminder();
+            var action = await actionSheet.UseActionSheet(
+               page,
+               FeedbackMessage,
+               FeedbackTitle,
+               DisturbMessage
+            );
 
-            return feedback;
+            if (action.Equals(FeedbackTitle)) {
+                response.ButtonClicked = Enums.RatingViewButtonTypes.feedbacknow;
+            } else if (action.Equals(DisturbMessage)) {
+                disableReminder();
+                response.ButtonClicked = Enums.RatingViewButtonTypes.cancelfeedback;
+            }
+
+            return response;
         }
 
         private async Task<RatingViewResponse> showStoreRatingActionSheet(Page page, string appStoreId)

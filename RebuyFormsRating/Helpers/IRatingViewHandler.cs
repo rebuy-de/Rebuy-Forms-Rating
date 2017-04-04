@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using RebuyFormsRating.Models;
 using Xamarin.Forms;
 
-namespace RebuyFormsRating
+namespace RebuyFormsRating.Helpers
 {
     public interface IRatingViewHandler
     {
