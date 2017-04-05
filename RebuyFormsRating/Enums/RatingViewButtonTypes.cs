@@ -6,8 +6,9 @@ namespace RebuyFormsRating.Enums
         none = 0,
         ratenow = 1,
         ratelater = 2,
-        cancelrating = 4,
-        sendfeedback = 5,
-        cancelfeedback = 6
+        cancelrating = 3,
+        feedbacknow = 4,
+        feedbacklater = 5,
+        cancelfeedback = 6,
     }
 }

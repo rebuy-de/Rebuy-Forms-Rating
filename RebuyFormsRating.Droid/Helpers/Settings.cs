@@ -39,5 +39,6 @@ namespace RebuyFormsRating.Droid.Helpers
         AppSettings.AddOrUpdateValue<string>(SettingsKey, value);
       }
     }
+
   }
 }*/
